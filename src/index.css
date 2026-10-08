@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #202020;
+  background: #fff;
+}
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root[data-theme='dark'] .btn {
+  border-color: transparent;
+}
+
+:root[data-theme='dark'] body,
+:root[data-theme='dark'] .register,
+:root[data-theme='dark'] .login {
+  background: #121820;
+  color: #e5e7eb;
+}
+
+:root[data-theme='dark'] .app-header,
+:root[data-theme='dark'] .landing-header,
+:root[data-theme='dark'] .register-box,
+:root[data-theme='dark'] .register-secondary-box,
+:root[data-theme='dark'] .login-box,
+:root[data-theme='dark'] .header-menu-nav,
+:root[data-theme='dark'] .modal {
+  background: #1d2733;
+  color: #e5e7eb;
+}
+
+:root[data-theme='dark'] .optional-fields,
+:root[data-theme='dark'] .register-box input,
+:root[data-theme='dark'] .register-box select,
+:root[data-theme='dark'] .login-box input {
+  background: #151e28;
+  border-color: #3b4a5c;
+  color: #e5e7eb;
+}
+
+:root[data-theme='dark'] .register-box input:focus,
+:root[data-theme='dark'] .register-box select:focus,
+:root[data-theme='dark'] .login-box input:focus {
+  border-color: #00b8df;
+}
+
+:root[data-theme='dark'] .register-box label,
+:root[data-theme='dark'] .login-box label,
+:root[data-theme='dark'] .login-box h1,
+:root[data-theme='dark'] .modal-header h2,
+:root[data-theme='dark'] .header-menu-nav a,
+:root[data-theme='dark'] .navegation a {
+  color: #d3e7ee;
+}
+
+:root[data-theme='dark'] .login-box p,
+:root[data-theme='dark'] .forgot-password,
+:root[data-theme='dark'] .register-link,
+:root[data-theme='dark'] .optional-fields legend {
+  color: #aebdce;
+}
+
+:root[data-theme='dark'] .hamburger span {
+  background: #d3e7ee;
+}
+
+:root[data-theme='dark'] .theme-toggle:hover,
+:root[data-theme='dark'] .hamburger:hover,
+:root[data-theme='dark'] .header-menu-nav a:hover,
+:root[data-theme='dark'] .header-menu-nav a:focus-visible,
+:root[data-theme='dark'] .modal-close {
+  background: #2b3949;
+  color: #d3e7ee;
+}
+
+:root[data-theme='dark'] .theme-icon,
+:root[data-theme='dark'] .password-toggle img {
+  filter: brightness(0) invert(1);
+}
+
+:root[data-theme='dark'] .register-box h1,
+:root[data-theme='dark'] .header-menu-exit {
+  border-color: #3b4a5c;
+}

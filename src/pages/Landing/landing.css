@@ -1,0 +1,102 @@
+.landing-header {
+  background-color: #F5F7FA;
+}
+
+.box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+
+.logo {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 140px;
+  height: 46px;
+}
+
+.logo-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  height: auto;
+}
+
+.navegation ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logo,
+.navegation a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navegation a {
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  color: #12444f;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navegation a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #009fe3 0%, #00b8df 54%, #00c8e8 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.navegation a:hover,
+.navegation a:focus-visible {
+  background: linear-gradient(90deg, #009fe3 0%, #00b8df 54%, #00c8e8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.navegation a:hover::after,
+.navegation a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.box-header a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .box-header {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .navegation {
+    order: 3;
+    width: 100%;
+  }
+
+  .navegation ul {
+    gap: 16px;
+  }
+}
