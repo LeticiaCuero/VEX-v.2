@@ -1,12 +1,43 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { supabase } from '../lib/supabase'
 import './Header.css'
 
 export default function Header({ title }: { title: string }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [signingOut, setSigningOut] = useState(false)
+  const [logoutError, setLogoutError] = useState('')
+  const [companyName, setCompanyName] = useState('')
   const [darkTheme, setDarkTheme] = useState(() => document.documentElement.dataset.theme === 'dark')
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const menuId = useId()
+
+  useEffect(() => {
+    let active = true
+    async function loadCompany() {
+      if (!supabase) return
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) return
+      const { data } = await supabase.from('companies').select('name').eq('id', session.user.id).maybeSingle()
+      if (active) setCompanyName(data?.name ?? session.user.email ?? '')
+    }
+    void loadCompany().catch(() => {})
+    return () => { active = false }
+  }, [])
+
+  async function handleLogout() {
+    if (signingOut || !supabase) return
+    setSigningOut(true)
+    setLogoutError('')
+    try {
+      const { error } = await supabase.auth.signOut({ scope: 'local' })
+      if (error) throw error
+      window.location.replace('/login')
+    } catch {
+      setLogoutError('Não foi possível sair. Tente novamente.')
+      setSigningOut(false)
+    }
+  }
 
   function toggleTheme() {
     const nextTheme = darkTheme ? 'light' : 'dark'
@@ -47,9 +78,8 @@ export default function Header({ title }: { title: string }) {
         <p className="app-header-title">{title}</p>
         <div className="header-menu" ref={menuRef}>
         <button className="theme-toggle" type="button" aria-label={darkTheme ? 'Ativar tema claro' : 'Ativar tema escuro'} onClick={toggleTheme}>
-          {darkTheme
-            ? <img className="theme-icon" src="/src/assets/icons/sun.svg" alt="" />
-            : <img className="theme-icon" src="/src/assets/icons/moon.svg" alt="" />}
+          <span className="theme-icon theme-sun" aria-hidden="true" />
+          <span className="theme-icon theme-moon" aria-hidden="true" />
         </button>
         <button ref={buttonRef} className="hamburger" type="button" aria-label="Menu" aria-expanded={menuOpen} aria-controls={menuId} onClick={() => setMenuOpen(!menuOpen)}>
           <span />
@@ -58,15 +88,19 @@ export default function Header({ title }: { title: string }) {
         </button>
         {menuOpen && <button className="menu-overlay" type="button" aria-label="Fechar menu" onClick={() => setMenuOpen(false)} />}
         <aside id={menuId} className="header-menu-nav" aria-label="Menu lateral" hidden={!menuOpen}>
+          <div className="menu-user">
+            <p className="menu-user-name">{companyName || 'Empresa'}</p>
+          </div>
           <nav aria-label="Navegação do sistema">
           <ul>
             <li><a href="/register">Cadastro</a></li>
             <li><a href="/historico">Histórico</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/tarifa">Tarifa</a></li>
-            <li className="header-menu-exit"><a href="/login">Sair</a></li>
+            <li className="header-menu-exit"><button className="menu-logout" type="button" onClick={handleLogout} disabled={signingOut}>{signingOut ? 'Saindo...' : 'Sair'}</button></li>
           </ul>
           </nav>
+          {logoutError && <p className="menu-error" role="alert">{logoutError}</p>}
         </aside>
         </div>
       </div>

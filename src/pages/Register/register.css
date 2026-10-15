@@ -1,3 +1,19 @@
+.register-message {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.register-box select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+:root[data-theme='dark'] .register-message {
+  color: #aebdce;
+}
+
 .register {
   min-height: calc(100dvh - 86px);
   padding: 20px 24px;
@@ -13,7 +29,7 @@
 }
 
 .register-box,
-.register-secondary-box {
+.active-history-box {
   width: 100%;
   min-width: 0;
   padding: 24px;
@@ -28,12 +44,13 @@
     justify-content: center;
   }
 
-  .register-secondary-box {
+  .active-history-box {
     min-height: 240px;
   }
 }
 
-.register-box h1 {
+.register-box h1,
+.active-history-box h2 {
   margin: 0 0 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid #d6dce3;
@@ -112,7 +129,4 @@
     padding: 20px;
   }
 
-  .register-box form {
-    grid-template-columns: 1fr;
-  }
 }

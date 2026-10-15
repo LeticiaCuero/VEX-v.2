@@ -19,7 +19,7 @@ export default function Landing() {
           </nav>
         </div>
         <div className="user-acess">
-          <Button href="/login">Acessar<img src="/src/assets/icons/arrow.svg" alt="" /></Button>
+          <Button href="/login">Acessar<span className="icon-arrow" aria-hidden="true" /></Button>
         </div>
       </div>
     </header>

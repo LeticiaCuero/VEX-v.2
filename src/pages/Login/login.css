@@ -1,3 +1,9 @@
+.login-message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .login {
   min-height: 100dvh;
   display: grid;
@@ -107,11 +113,6 @@
   background: transparent;
   color: #64748b;
   cursor: pointer;
-}
-
-.password-toggle img {
-  width: 20px;
-  height: 20px;
 }
 
 .password-toggle:focus-visible {

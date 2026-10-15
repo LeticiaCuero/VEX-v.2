@@ -8,7 +8,6 @@
   border-radius: 16px;
   color: #202020;
   background: #fff;
-  box-shadow: 0 16px 48px rgba(18, 68, 79, 0.2);
   text-align: left;
 }
 
@@ -37,7 +36,7 @@
   flex-shrink: 0;
   border: 0;
   border-radius: 8px;
-  background: #f5f7fa;
+  background: transparent;
   color: #12444f;
   font-size: 26px;
   cursor: pointer;

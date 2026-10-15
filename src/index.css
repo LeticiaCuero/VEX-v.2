@@ -30,7 +30,7 @@ body {
 :root[data-theme='dark'] .app-header,
 :root[data-theme='dark'] .landing-header,
 :root[data-theme='dark'] .register-box,
-:root[data-theme='dark'] .register-secondary-box,
+:root[data-theme='dark'] .active-history-box,
 :root[data-theme='dark'] .login-box,
 :root[data-theme='dark'] .header-menu-nav,
 :root[data-theme='dark'] .modal {
@@ -76,18 +76,55 @@ body {
 :root[data-theme='dark'] .theme-toggle:hover,
 :root[data-theme='dark'] .hamburger:hover,
 :root[data-theme='dark'] .header-menu-nav a:hover,
-:root[data-theme='dark'] .header-menu-nav a:focus-visible,
-:root[data-theme='dark'] .modal-close {
+:root[data-theme='dark'] .header-menu-nav a:focus-visible {
   background: #2b3949;
   color: #d3e7ee;
 }
 
+:root[data-theme='dark'] .modal-close {
+  background: transparent;
+  color: #d3e7ee;
+}
+
 :root[data-theme='dark'] .theme-icon,
-:root[data-theme='dark'] .password-toggle img {
+:root[data-theme='dark'] .password-toggle .icon-eye {
   filter: brightness(0) invert(1);
 }
 
+.icon-arrow,
+.icon-eye,
+.theme-icon {
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-arrow,
+.icon-eye {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-arrow {
+  background-image: url('./assets/icons/arrow.svg');
+}
+
+.icon-eye {
+  background-image: url('./assets/icons/eye.svg');
+}
+
+.theme-sun {
+  background-image: url('./assets/icons/sun.svg');
+}
+
+.theme-moon {
+  background-image: url('./assets/icons/moon.svg');
+}
+
 :root[data-theme='dark'] .register-box h1,
+:root[data-theme='dark'] .active-history-box h2,
 :root[data-theme='dark'] .header-menu-exit {
   border-color: #3b4a5c;
 }

@@ -1,3 +1,4 @@
+import Header from '../../components/Header'
 import './home.css'
 
 export default function Home() {
@@ -8,4 +9,3 @@ export default function Home() {
     </>
   )
 }
-import Header from '../../components/Header'

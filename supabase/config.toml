@@ -1,0 +1,3 @@
+[functions.admin-companies]
+# O handler verifica o token no Supabase Auth e consulta is_admin() em cada chamada.
+verify_jwt = false
